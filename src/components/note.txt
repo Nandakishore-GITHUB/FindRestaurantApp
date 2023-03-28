@@ -1,0 +1,113 @@
+api call in js
+-------------------------
+
+AJAX 
+-----------
+    1. XMLhtttp
+    2.fetch
+    3.asynch await
+
+
+Redirection in React
+----------------------------
+
+    react-router-dom
+        - npm i react-router-dom
+
+import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
+
+         BrowserRouter as Router - all routing need components
+         Routes - to set the path for each components
+         Route - for morethan on path
+
+Hooks
+-----------------
+
+    useParams - hook used to access params from component url
+
+
+REDUX
+----------------------
+
+    - coupling is used to share data b/w components 
+        it is dependancy b/w components or many connections b/w parent and child component
+        ie. One parent has a child and that child component also has one or more child components and so on.
+            the transfer of data is depended b/w the components, therefore if a component in b/w has an error the data
+            can't be shared to its child components or other components depended to it.
+            And this issue is known as "props drilling"
+            
+            props drilling - if any intermediate components have any errrors all other childs will not work 
+                             and the project get stuck
+            
+            To avoid props driling we need to reduce coupling and make all the comnponents independed
+
+            For this react introduced a new technology - state management technology known as "REDUX"
+
+    REDUX process
+    --------------------
+
+        - create a new js file to keep the states
+        - all the components can access the js file
+
+        - the components only can access the ats from the js file but they can't update datas in js file
+
+        - if we want to update the data file
+             - component has to request a dispatch to the action file
+                action file has the logic of updating the state or data
+             - the response is given to the reducer as a payload
+             - the reducer updates the data in the js file
+        
+        Action - a file with all the logics to update the state
+        Dispatch - a method used to dispatch the logic in action file when the component need state updation
+        Reducer - update the datas in js file according to the payload response got from the action file
+
+        Libraries to apply redux
+        -----------------------
+
+            1. REDUX
+            2. REACT-REDUX
+            3. REDUX-THUNK
+
+                npm i redux react-redux redux-thunk
+        
+        createStore() -  method in REDUX used to create store in js file
+                      - 2 arguments
+                            1. Reducer
+                            2. Middleware (REDUX is synchronous , we have to make it asynchronous)
+
+        applyMiddleware() - method in REDUX to apply 
+                                eg : applyMiddleware(...middleware)
+                                    " ... " it is spread operator used to add multiple datas
+
+        combineReducers() - method in REDUX to combine all the reducers in js file
+
+        thunk - method in REDUX-THUNK to create Middleware
+                        
+
+                EXAMPLE
+                ---------------------------------------------------------------------------------------------------
+
+                        import { createStore, combineReducers, applyMiddleware } from "redux";
+                        import thunk from "redux-thunk";
+
+                        // create reducer
+                        const reducers = combineReducers({
+
+                        })
+
+                        // create middleware
+                        const middleware = [thunk]
+
+                        // create store
+                        const store = createStore(reducers,applyMiddleware(...middleware))
+
+                        export default store      
+
+                ---------------------------------------------------------------------------------------------------   
+
+        1. Create store
+        2. apply the store in index.js using provider tag from react-redux
+            provider - its a tag used to pass the store  
+                       
+                
+            
